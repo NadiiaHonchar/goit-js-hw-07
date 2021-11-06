@@ -38,11 +38,13 @@ gallery.addEventListener('click', e =>
  
 }); 
 var simplelightbox = new SimpleLightbox('.gallery a', { 
-widthRatio: 0.5,
-heightRatio: 0.5,
+widthRatio: 0.8,
+heightRatio: 0.8,
 throttleInterval: 250,
 fadeSpeed: 250,
 // captionSelector:`${e.target.nodeName.description}`
+
+
 });
 
 console.log(galleryItems);
