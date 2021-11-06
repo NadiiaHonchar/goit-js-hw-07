@@ -3,7 +3,6 @@ import { galleryItems } from './gallery-items.js';
 
 const gallery = document.querySelector('.gallery');
 
-
 function getGalleryItem()
 {
   let fragment = new DocumentFragment;
@@ -16,35 +15,29 @@ function getGalleryItem()
       galleryImg.classList.add('gallery__image');
       galleryImg.src = item.preview;          
       galleryImg.alt = item.description;
-      galleryLink.appendChild(galleryImg);
-      
+      galleryLink.appendChild(galleryImg);      
       fragment.append(galleryLink);
     })
     return fragment;
 }
 gallery.append(getGalleryItem());
 
-
 gallery.addEventListener('click', e => 
 { 
   e.preventDefault(); 
   if (e.target.nodeName !== 'IMG') { 
     return; 
-  } 
-  
-  instance.element().querySelector('img').src = e.target.dataset.source; 
-   
- show.simplelightbox;
- 
+  }   
+  instance.element().querySelector('img').src = e.target.dataset.source;    
+ show.simplelightbox; 
 }); 
-var simplelightbox = new SimpleLightbox('.gallery a', { 
+
+var simplelightbox = new SimpleLightbox('.gallery a', 
+{ 
 widthRatio: 0.8,
 heightRatio: 0.8,
-throttleInterval: 250,
-fadeSpeed: 250,
-// captionSelector:`${e.target.nodeName.description}`
-
-
+captionsData: 'alt',
+captionDelay: 250,
 });
 
 console.log(galleryItems);

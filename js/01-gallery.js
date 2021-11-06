@@ -18,8 +18,7 @@ function getGalleryItem()
       let galleryImg = document.createElement("img");
       galleryImg.classList.add('gallery__image');
       galleryImg.src = item.preview;
-      galleryImg.dataset.source = item.original;
-      
+      galleryImg.dataset.source = item.original;      
       galleryImg.alt = item.description;
       div.appendChild(galleryLink);
       galleryLink.appendChild(galleryImg);
@@ -31,24 +30,22 @@ function getGalleryItem()
 gallery.append(getGalleryItem());
   
   
-  gallery.addEventListener('click', e => 
+gallery.addEventListener('click', e => 
+{ 
+  e.preventDefault(); 
+  if (e.target.nodeName !== 'IMG') 
   { 
-      e.preventDefault(); 
-      if (e.target.nodeName !== 'IMG') { 
-          return; 
-        } 
-      
-        instance.element().querySelector('img').src = e.target.dataset.source; 
-      
-        instance.show(); 
-      }); 
-      
-      const instance = basicLightbox.create(`<img src="" />`, { 
-          onShow: instance => ('onShow', instance), 
-          onClose: instance => ('onClose', instance), 
-        });
-             
-
+    return; 
+  }   
+    instance.element().querySelector('img').src = e.target.dataset.source;   
+    instance.show(); 
+  }); 
+    
+const instance = basicLightbox.create(`<img src="" />`, 
+{ 
+    onShow: instance => ('onShow', instance), 
+    onClose: instance => ('onClose', instance), 
+});          
 
 console.log(galleryItems);
 
